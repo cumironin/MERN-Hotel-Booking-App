@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
 import authRouter from "./routes/auth.route.js";
+
 dotenv.config();
 
 mongoose
@@ -21,11 +22,8 @@ app.listen(3000, () => {
 });
 
 app.get("/test", (req, res) => {
-  res.json({
-    message: "Hello World",
-  });
+  res.send("Hello World");
 });
 
-app.use(express.json());
-app.use("/api/user", userRouter);
-app.use("/api/auth", authRouter);
+app.use("api/user", userRouter);
+app.use("api/auth", authRouter);
